@@ -1,0 +1,10 @@
+LeetCode Hard
+
+Max Score Words formed by Letters
+https://leetcode.com/problems/maximum-score-words-formed-by-letters/
+
+
+Easy
+
+Remove Digit From Number to Maximize Result
+https://leetcode.com/problems/remove-digit-from-number-to-maximize-result/description/
