@@ -1,0 +1,16 @@
+// https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier
+
+-- SELECT euni.unique_id, e.name 
+-- FROM Employees AS E LEFT JOIN EmployeeUNI AS euni  
+-- ON e.id = euni.id;
+
+-- Since there are some Employees that are not in UNI, we do left join on Employees with UNI 
+
+-- OR --
+
+-- We can do right join on UNI on Employees --
+
+
+SELECT euni.unique_id, e.name 
+FROM EmployeeUNI AS euni RIGHT JOIN Employees AS E
+ON e.id = euni.id;

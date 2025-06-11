@@ -1,0 +1,25 @@
+// https://leetcode.com/problems/circular-sentence
+
+class Solution {
+public:
+    bool isCircularSentence(string sentence) {
+        
+        int len = sentence.length();
+        if(sentence[0] != sentence[len-1]){
+            return false;
+        }
+
+        bool valid = true;
+
+        for(int i=0; i<len; i++){
+            if(sentence[i] == ' '){
+                if(sentence[i-1] != sentence[i+1]){
+                    valid = false;
+                    break;
+                }
+            }
+        }
+
+        return valid;
+    }
+};
