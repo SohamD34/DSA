@@ -12,15 +12,15 @@ void print(vector<vector<int>> &M){
     cout << endl;
 }
 
-int countSquares(vector<vector<int>> &matrix){
+int numSubmat(vector<vector<int>> &mat){
 
     // Brute force approach - O(r2*c2)
     // Stand at every (i,j) 
     // Check every possible square whose top left corner is (i,j)
     // Count for all such square if all are filled with 1
 
-    int rows = matrix.size();
-    int cols = matrix[0].size();
+    int rows = mat.size();
+    int cols = mat[0].size();
 
     vector<vector<int>> dp(rows, vector<int>(cols, 0));
     // print(dp);
@@ -30,22 +30,22 @@ int countSquares(vector<vector<int>> &matrix){
     int sum = 0;
 
     for(int c=0; c<cols; c++){
-        dp[0][c] = matrix[0][c];
+        dp[0][c] = mat[0][c];
         sum += dp[0][c];
     }
     for(int r=0; r<rows; r++){
-        dp[r][0] = matrix[r][0];
+        dp[r][0] = mat[r][0];
         sum += dp[r][0];
     }
-    sum -= dp[0][0];    // since it is calculated twice in the loops
+    sum -= dp[0][0];    
 
     // print(dp);
 
     for(int r=1; r<rows; r++){
         for(int c=1; c<cols; c++){
 
-            if(matrix[r][c] == 1){
-                dp[r][c] = 1 + min(dp[r-1][c-1], min(dp[r-1][c], dp[r][c-1]));
+            if(mat[r][c] == 1){
+                dp[r][c] = 1 + dp[r-1][c-1] + dp[r-1][c] + dp[r][c-1];
                 sum += dp[r][c];
             }
             else{
@@ -64,20 +64,20 @@ int main() {
     cin.tie(0);
     cout.tie(0);
 
-    vector<vector<int>> matrix = {
+    vector<vector<int>> mat = {
         {0,1,1,0},
         {0,1,1,1},
         {1,1,1,0}
     };
-    cout << countSquares(matrix) <<endl;
+    cout << numSubmat(mat) <<endl;
 
 
-    matrix = {
+    mat = {
         {1,0,1},
         {1,1,0},
         {1,1,0}
     };
-    cout << countSquares(matrix) <<endl;
+    cout << numSubmat(mat) <<endl;
 
 
     return 0;
